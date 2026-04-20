@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/friend1019/moneyway-react/master/public/images/moneyway.png" height="100" width="100"/>
 
-# ✈️예산 기반 AI 여행 플랫폼 "MONEYWAY" README
+# ✈️예산 기반 AI 여행 플랫폼 "MONEYWAY"
 
 ![alt text](main.png)
 
