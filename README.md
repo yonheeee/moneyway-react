@@ -158,6 +158,17 @@
 
 <br>
 
+### [사용자 로그인 전]
+- 이메일 주소와 비밀번호를 입력하면 입력창에서 바로 유효성 검사가 진행되고 통과하지 못한 경우 각 경고 문구가 입력창 하단에 표시됩니다.
+- 이메일 주소의 형식이 유효하지 않거나 이미 가입된 이메일일 경우 또는 비밀번호가 6자 미만일 경우에는 각 입력창 하단에 경구 문구가 나타납니다.
+- 작성이 완료된 후, 유효성 검사가 통과된 경우 다음 버튼이 활성화되며, 버튼을 클릭하면 프로필 설정 화면이 나타납니다.
+
+| 사용자 로그인 전 |
+|----------|
+|![join](/image/login/kakaologin.png)|
+
+<br>
+
 ### [회원가입]
 - 이메일 주소와 비밀번호를 입력하면 입력창에서 바로 유효성 검사가 진행되고 통과하지 못한 경우 각 경고 문구가 입력창 하단에 표시됩니다.
 - 이메일 주소의 형식이 유효하지 않거나 이미 가입된 이메일일 경우 또는 비밀번호가 6자 미만일 경우에는 각 입력창 하단에 경구 문구가 나타납니다.
@@ -165,20 +176,10 @@
 
 | 회원가입 |
 |----------|
-|![join](https://user-images.githubusercontent.com/112460466/210173571-490f5beb-5791-4a4a-8c5e-510cdcb5f1fe.gif)|
+|![join](/image/login/loginfirst.png)|
+|![join](/image/login/logining.png)|
+|![join](/image/login/wronglogin.png)|
 
-<br>
-
-### [프로필 설정]
-- 회원가입 페이지의 유효성 검사를 통과해야 진입할 수 있습니다.
-- 프로필 설정에 필요한 프로필 사진, 사용자 이름, 계정 ID, 소개를 입력받습니다.
-- 사용자 이름과 계정 ID는 필수 입력사항입니다.
-- 계정 ID에는 형식 및 중복 검사가 진행됩니다.
-- 프로필 사진은 등록하지 않을 경우 기본 이미지가 등록됩니다.
-
-| 프로필 설정 |
-|----------|
-|![setProfile](https://user-images.githubusercontent.com/112460466/210173749-2da6c9af-eb93-4eea-9663-1a03e19299ec.gif)|
 
 <br>
 
@@ -190,21 +191,25 @@
 
 | 로그인 |
 |----------|
-|![login](https://user-images.githubusercontent.com/112460466/210177956-c716414e-01c2-4c1e-b1f7-6562b9b7a857.gif)|
+|![login](/image/login/mainlogin.png)|
+|![login](/image/login/errorlogin.png)|
 
 <br>
 
-### [로그아웃]
+### [비밀번호 찾기, 비밀번호 재설정]
 - 상단 의 kebab menu를 클릭 후 나타나는 모달창의 로그아웃 버튼을 클릭하면 확인창이 뜹니다.
 - 로그아웃시 로컬 저장소의 토큰 값과 사용자 정보를 삭제하고 초기화면으로 이동합니다.
 
-| 로그아웃 |
+| 비밀번호 찾기 |
 |----------|
-|![logout](https://user-images.githubusercontent.com/112460466/210178009-11225733-7af5-4b8b-aa1c-fe264af01797.gif)|
+|![findpassword](/image/login/forgetmain.png)|
+|![findpassword](/image/login/forgetwrite.png)|
+|![findpassword](/image/login/forgetcode.png)|
+|![findpassword](/image/login/changepassword.png)|
 
 <br>
 
-### [상하단 배너]
+### [계획 추가]
 - 상단 배너 : 각 페이지별로 다른 종류의 버튼을 가지고 있습니다.
     - 뒤로가기 : 브라우저 상에 기록된 이전 페이지로 돌아갑니다.
     - 검색 : 사용자 검색 페이지로 이동합니다.
@@ -214,92 +219,122 @@
         - 사용자 프로필 페이지 - 설정 및 사용자 정보, 로그아웃
 - 하단 탭 메뉴 : 홈, 채팅, 게시물 작성, 프로필 아이콘을 클릭하면 각각 홈 피드, 채팅 목록, 게시글 작성 페이지, 내 프로필 페이지로 이동합니다.
 
-| 상하단 배너 |
+| 계획 추가 |
 |----------|
-|![tab](https://user-images.githubusercontent.com/112460466/210178028-3185f944-6ac1-468a-94ba-b32cdc5e380e.gif)|
+|![plan](/image/map/map.png)|
+|![plan](/image/map/addplan.png)|
+|![plan](/image/map/detailmap.png)|
 
 <br>
 
-### [홈 피드]
+### [계획 장바구니]
 - 자신이 팔로우 한 유저의 게시글이 최신순으로 보여집니다.
 - 팔로우 한 유저가 없거나, 팔로워의 게시글이 없을 경우 검색 버튼이 표시됩니다.
 - 게시글의 상단 유저 배너 클릭 시 게시글을 작성한 유저의 프로필 페이지로, 본문 클릭 시 게시글 상세 페이지로 이동합니다.
 
-| 팔로우하는 유저가 없을 때 | 팔로우하는 유저가 있을 때 |
-|----------|----------|
-|![home0](https://user-images.githubusercontent.com/112460466/210379059-48900aac-3735-45c6-a249-bc9c41b49414.gif)|![home1](https://user-images.githubusercontent.com/112460466/210379110-49153d27-0405-48e6-adfb-62c7818d2f43.gif)|
+| 계획 장바구니 | 
+|----------|
+|![cart](/image/cart/cartdefault.png)|
+|![cart](/image/cart/cartadd.png)|
 
 <br>
 
-### [검색]
+### [시간표]
 - 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
 - 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
 - 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
 
-| 검색 |
+| 시간표 |
 |----------|
-|![search](https://user-images.githubusercontent.com/112460466/210379805-6c8a42c0-0de8-48d3-8f75-cdf0ae5f4fb6.gif)|
+|![schedule](/image/schedule/scheduledefault.png)|
+|![schedule](/image/schedule/scheduletime.png)|
+|![schedule](/image/schedule/schedule.png)|
+|![schedule](/image/schedule/overmoney.png)|
+|![schedule](/image/schedule/deleteschedule.png)|
 
 <br>
 
-### [프로필]
+### [시간표 목록]
+- 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
+- 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
+- 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
 
-#### 1. 내 프로필
-- 상단 프로필란에 프로필 수정과 상품 등록 버튼이 나타납니다.
-- 판매중인 상품란에는 사용자가 판매하는 상품이 등록되며, 판매중인 상품이 없을 경우에는 영역 자체가 나타나지 않습니다.
-- 게시글란은 상단의 리스트형과 앨범형 두 개의 버튼을 통해서 나누어 볼 수 있습니다.
-    - 리스트형의 경우, 사용자가 작성한 글 내용과 이미지, 좋아요와 댓글의 수를 보여줍니다.
-    - 앨범형의 경우, 사용자 게시글 중 이미지가 있는 글만 필터링해 바둑판 배열로 보여줍니다.
-- 게시글을 클릭하면 각 게시글의 상세페이지로 이동합니다.
+| 시간표 목록 |
+|----------|
+|![schedule list](/image/schedule/emptyschedule.png)|
+|![schedule list](/image/schedule/schedulelist.png)|
+|![schedule list](/image/schedule/deletelist.png)|
 
-| 리스트형 & 앨범형 게시글 | 팔로잉 & 팔로워 리스트 |
-|----------|----------|
-|![myProfile](https://user-images.githubusercontent.com/112460466/210380492-40560e0b-c306-4e69-8939-cc3e7dc3d8fe.gif)|![followList](https://user-images.githubusercontent.com/112460466/210380539-d09b0bd7-0b61-4b22-85fa-f75e6bcecb68.gif)|
 
 <br>
 
-#### 2. 타 유저의 프로필
-- 버튼을 클릭해 해당 사용자를 팔로우 또는 언팔로우할지 결정할 수 있으며 팔로워 수의 변화가 페이지에 즉시 반영됩니다.
+### [AI 시간표]
+- 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
+- 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
+- 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
 
-| 팔로우 & 언팔로우 |
+| AI 시간표 |
 |----------|
-|![yourProfile](https://user-images.githubusercontent.com/112460466/210380853-04f2d2bd-adab-4786-a8e8-c275ce765071.gif)|
+|![aiplan](/image/AIplan/aimoney.png)|
+|![aiplan](/image/AIplan/aiperiod.png)|
+|![aiplan](/image/AIplan/ainame.png)|
 
 <br>
 
-#### 3. 프로필 수정
-- 사용자 프로필 이미지, 이름, 아이디, 소개 중 한 가지를 수정하면 저장 버튼이 활성화됩니다.
-- 계정 ID의 유효한 형식 및 중복 검사를 통과하지 못하면 하단에 경고 문구가 나타나며 저장 버튼이 비활성화됩니다.
-- 사용자 이름과 소개는 공백으로 시작할 수 없습니다.
-- 프로필 수정이 완료되면 내 프로필 페이지로 이동합니다.
+#### [게시판]
+- 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
+- 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
+- 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
 
-| 초기화면 |
+| 게시판 |
 |----------|
-|![editProfile](https://user-images.githubusercontent.com/112460466/210381212-d67fdf87-b90c-4501-a331-f2a384534941.gif)|
+|![community](/image/community/communitydefault.png)|
+|![community](/image/community/communitywrite.png)|
+|![community](/image/community/writecommunity.png)|
+
 
 <br>
 
-### [게시글]
+### [마이페이지]
+- 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
+- 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
+- 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
 
-#### 1. 게시글 작성
-- 글이 입력되거나 사진이 첨부되면 업로드 버튼이 활성화됩니다.
-- 최대 세 장까지 이미지 첨부가 가능하며 첨부한 파일을 취소할 수 있습니다.
-- 게시글 하단에 업로드 날짜가 표시됩니다.
-
-| 게시글 작성 |
+| 마이페이지 |
 |----------|
-|![uploadPost](https://user-images.githubusercontent.com/112460466/210381758-1de5a889-f587-41d2-b200-22c20a970519.gif)|
+|![mypage](/image/mypage/mypagedefault.png)|
+|![mypage](/image/mypage/scrapt.png)|
+|![mypage](/image/mypage/scrapt.png)|
+|![mypage](/image/mypage/edit.png)|
+
 
 <br>
 
-#### 2. 게시글 수정 및 삭제
-- 자신의 게시글일 경우 모달 버튼을 통해 수정, 삭제가 가능합니다.
-- 게시글 삭제 버튼 클릭 시, 게시글을 삭제하고 페이지를 리렌더링하여 삭제된 내용을 페이지에 반영합니다.
-- 타 유저의 게시글일 경우 모달 버튼을 통해 신고할 수 있습니다.
+### [튜토리얼]
+- 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
+- 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
+- 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
 
-| 게시글 수정 & 삭제 |
+| 튜토리얼 |
 |----------|
-|![editDeletePost](https://user-images.githubusercontent.com/112460466/210382021-da057943-dc21-411e-a1f8-552be0e973bf.gif)|
+|![tutorial](/image/tutorial/tutorial1.png)|
+|![tutorial](/image/tutorial/tutorial2.png)|
+|![tutorial](/image/tutorial/tutorial3.png)|
+|![tutorial](/image/tutorial/tutorial4.png)|
+|![tutorial](/image/tutorial/tutorial5.png)|
+
+<br>
+
+### [상단 및 배너]
+- 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
+- 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
+- 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
+
+| 상단 및 배너 |
+|----------|
+|![header](/image/template/header.png)|
+|![header](/image/template/side.png)|
+
 
 <br>
 
