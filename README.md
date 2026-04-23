@@ -149,9 +149,12 @@
     - 로그인이 되어 있는 경우 : README 홈 화면
 - SNS(카카오톡, 구글, 페이스북) 로그인 기능은 구현되어 있지 않습니다.
 
-| 초기화면1 | 초기화면2 | 초기화면3 | 초기화면4 |
-|----------|----------|----------|----------|
-|![alt text](/image/main/mainpage1.png)|![alt text](/image/main/mainpage2.png)|![alt text](/image/main/mainpage3.png)|![alt text](/image/main/mainpage4.png)|
+| 초기화면 |
+|----------|
+![alt text](/image/main/mainpage1.png)
+![alt text](/image/main/mainpage2.png)
+![alt text](/image/main/mainpage3.png)
+![alt text](/image/main/mainpage4.png)
 
 <br>
 
