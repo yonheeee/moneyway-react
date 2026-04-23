@@ -1,8 +1,9 @@
 <img src="https://raw.githubusercontent.com/friend1019/moneyway-react/master/public/images/moneyway.png" height="100" width="100"/>
 
 # ✈️예산 기반 AI 여행 플랫폼 "MONEYWAY"
+### 🏆**2025 관광 데이터 활용 공모전(한국관광공사 X 카카오 공동주관) [우수상] 수상**
 
-![alt text](main.png)
+![alt text](/image/main/main.png)
 
 <br>
 
