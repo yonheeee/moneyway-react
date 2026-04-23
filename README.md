@@ -151,7 +151,7 @@
 
 | 초기화면1 | 초기화면2 | 초기화면3 | 초기화면4 |
 |----------|----------|----------|----------|
-|![alt text](./image/main/mainpage1.png)|![alt text](./image/main/mainpage2.png)|![alt text](./image/main/mainpage3.png)|![alt text](./image/main/mainpage4.png)|
+|![alt text](/image/main/mainpage1.png)|![alt text](/image/main/mainpage2.png)|![alt text](/image/main/mainpage3.png)|![alt text](/image/main/mainpage4.png)|
 
 <br>
 
