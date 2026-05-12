@@ -1,0 +1,256 @@
+
+.myplan-container {
+  padding: 2.7rem;              
+  display: flex;
+  flex-direction: column;           
+  background: #f6f7fb;
+  max-width: none;
+  
+}
+.myplan-container h1{
+  font-size: 2.3rem;
+  margin: 2rem 0 0 0;
+}
+
+.plan-empty-text{
+  font-size: 1.5rem;
+  color: #7F7F7F;
+}
+
+.section-label {
+  margin: 0.9rem 0 0.675rem;    
+  color: #9aa1ac;
+  font-size: 1.25rem;          
+}
+
+
+.plan-card {
+  background: #ffffff;
+  border-radius: 1.8rem;         
+  padding: 2.45rem 2.9rem;      
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.8rem;
+  margin-bottom: 2rem;     
+  box-shadow: 0 0.225rem 1.125rem rgba(16, 24, 40, 0.06);
+  position: relative;
+  overflow: hidden;  
+}
+
+.plan-card-left {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;                   
+  min-width: 0;
+}
+
+.plan-thumb {
+  width: 6.3rem;               
+  height: 6.3rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.plan-title-box { min-width: 0; }
+
+.myplan-title {
+  font-size: 2.3rem;               
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 46.8rem;            
+}
+
+.plan-subtitle {
+  margin-top: 0.55rem;           
+  font-size: 1.25rem;          
+  color: #667085;
+}
+
+
+.plan-card-right {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;                  
+}
+
+.budget-area {
+  position: relative;
+  width: 41.4rem;              
+}
+
+
+.budget-badge {
+  position: absolute;
+  top: -2rem;                    
+  transform: translateX(-50%);
+  padding: 0.9rem 1.35rem;      
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 0.225rem 1.125rem rgba(17, 24, 39, 0.1);
+  font-size: 1.25rem;           
+  font-weight: 700;
+  color: #3378ff;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+
+.bar-track {
+  position: relative;
+  height: 0.9rem;                
+  border-radius: 999px;
+  background: #e7eaf1;
+  overflow: hidden;
+}
+
+.bar-fill {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #378cff;
+  border-radius: 999px;
+}
+
+.bar-base {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 50%;
+  height: 0.225rem;              
+  transform: translateY(-50%);
+  background: #d0d5dd;
+  pointer-events: none;
+}
+
+
+.budget-meta,
+.budget-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.9rem;            
+  font-size: 1.25rem;            
+  color: #475467;
+}
+.meta-left { font-weight: 600; }
+.meta-right { color: #0f172a; }
+
+
+.chevron-btn {
+  width: 3.8rem;                
+  height: 3.8rem;
+  border-radius: 999px;
+  border: none;
+  background: none;
+  color: #3843a7;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.chevron-btn img { width: 2.5rem; height: 2.5rem; } /* 2.5rem → 2.25rem */
+
+.add-card {
+  margin-top: 0.9rem;            
+  background: #ffffff;
+  border-radius: 1.8rem;         
+  height: 12rem;              
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0.225rem 1.125rem rgba(16, 24, 40, 0.06);
+}
+
+.add-circle {
+  width: 3rem;                 
+  height: 3rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 0.225rem solid #9aa1ac;
+  color: #9aa1ac;
+  font-weight: 700;
+  font-size: 2rem;             
+}
+
+/* 반응형 */
+@media (max-width: 48rem) {
+  .plan-card {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;              
+  }
+  .card-right { justify-content: space-between; }
+  .budget-area { width: 100%; }
+}
+
+.card-track {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.6rem;
+  transition: transform 0.25s ease;
+}
+
+.card-actions {
+  position: absolute;
+  top: 50%; 
+  right: 0;
+  transform: translateY(-50%);  
+  width: calc((2 * var(--act-size)) + var(--act-gap) + (2 * var(--act-pad)));
+  display: flex;
+  flex-direction: row;
+  align-items: center;          
+  justify-content: flex-end;    
+  gap: var(--act-gap);
+  padding-right: 3rem;
+
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 32%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.plan-card {
+  --act-size: 8rem;   
+  --act-gap: 0.75rem;   
+  --act-pad: 0.75rem;   
+}
+
+.plan-card.is-reveal .card-track {
+  transform: translateX(calc(-1 * ((2 * var(--act-size)) + var(--act-gap) + 2rem)));
+}
+.plan-card.is-reveal .card-actions { 
+  opacity: 1; 
+  pointer-events: auto; 
+}
+
+.action-btn {
+  min-width: 10rem;       
+  height: 4.4rem;         
+  flex: 0 0 auto;        
+  border-radius: 0.75rem;
+  padding: 0 1.5rem;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.15;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border: 0.1rem solid #C1C1C1;
+  cursor: pointer;
+  white-space: nowrap;   
+  gap: 0.8rem;           
+}
+
+.action-btn.primary { background:#ffffff; color:#111827; border-color:#9aa1ac; }
+.action-btn.danger  { background:#ffffff; color:#f83a60; border-color:#9aa1ac; }
+
+/* 반응형 */
+@media (max-width: 48rem) {
+  .plan-card { --act-size: 4.4rem; --act-gap: 0.6rem; --act-pad: 0.6rem; }
+}

@@ -1,0 +1,57 @@
+/* 예산 컨테이너 */
+.budget-container {
+  width: 100%;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-radius: 1.2rem;
+}
+
+.budget-values {
+  color: black;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.budget-inputs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 3rem;
+}
+
+.budget-input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.budget-input-wrapper label {
+  color: black;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  padding-left: 0.3rem;
+}
+
+.budget-input-slider {
+  width: 100%;
+  background: white;
+  border: 1px solid #D9D9D9 !important ;
+  border-radius: 5rem;
+  padding: 1.3rem;
+  font-size: 1.8rem !important;
+  font-weight: 600;
+  color: #222; 
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.budget-dash {
+  font-size: 2.5rem;
+  color: #b1b8c7;
+  padding-bottom: 0.6rem;
+}

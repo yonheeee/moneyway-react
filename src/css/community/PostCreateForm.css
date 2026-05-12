@@ -1,0 +1,237 @@
+/* =============================
+   썸네일 & 미리보기 공통
+============================= */
+.thumbnail-selector {
+  margin: 1.6rem 0;
+}
+.thumbnail-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+}
+
+/* 리스트/단일 공통 래퍼 */
+.thumbnail-image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.thumbnail-item,
+.thumbnail-single-wrap {
+  position: relative; /* ⛳ 삭제 버튼 중앙 배치용 기준 */
+  display: inline-block;
+}
+
+/* 이미지 사이즈/스타일(통일) */
+.thumbnail-image {
+  display: block;
+  width: 16rem; /* = 160px */
+  height: auto;
+  max-width: 100%;
+  border-radius: 0.8rem;
+  object-fit: cover;
+  border: 0.2rem solid transparent;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.thumbnail-image.selected {
+  border-color: #0066f9;
+}
+
+/* =============================
+   삭제 버튼 (정중앙 배치)
+============================= */
+.remove-photo-btn,
+.thumb-remove-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* ✅ 이미지 정중앙 */
+  z-index: 10;
+
+  /* 버튼 비주얼 */
+  width: 3.2rem; /* = 32px */
+  height: 3.2rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff;
+  font-size: 2rem; /* X 표시 크기 */
+  line-height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  /* 가독성 보강 */
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.2),
+    0 0 0 0.2rem rgba(255, 255, 255, 0.25) inset;
+}
+
+.remove-photo-btn:hover,
+.thumb-remove-btn:hover {
+  background: rgba(255, 0, 0, 0.9);
+}
+
+/* 제목행(필요 시 유지) */
+.thumbnail-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =============================
+   (기존 레이아웃/폼 관련 유지)
+============================= */
+.post-form-whole-wrapper {
+  min-height: 79vh;
+  padding: 2rem;
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.post-form-wrapper {
+  width: 60%;
+  background: #fff;
+  border-radius: 2rem;
+  padding: 2rem;
+}
+.post-header-create {
+  margin-bottom: 1.5rem;
+}
+.post-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post-title-input {
+  font-size: 2.4rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-weight: bold;
+  font-family: "Pretendard";
+}
+.post-title-input::placeholder {
+  color: #c1c1c1;
+}
+.challenge-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+.challenge-label-inactive {
+  font-size: 1.4rem;
+  color: #bbd6ff;
+}
+.challenge-label.active {
+  color: #0066f9;
+  font-weight: bold;
+}
+.divider {
+  margin-top: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-body {
+  display: flex;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+.profile-img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.post-content-input {
+  flex: 1;
+  font-size: 2rem;
+  font-family: "Pretendard";
+  border: none;
+  outline: none;
+  background: transparent;
+  resize: none;
+  padding-bottom: 40rem;
+}
+.post-content-input::placeholder {
+  color: #c1c1c1;
+}
+
+.post-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+.budget-group {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.budget-label {
+  font-size: 2rem;
+  font-weight: 500;
+  font-family: "Pretendard";
+  color: #333;
+  white-space: nowrap;
+}
+.budget-input {
+  box-sizing: border-box;
+  width: 18rem !important;
+  height: 4rem;
+  line-height: 4rem;
+  padding: 0 1.6rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 2rem;
+  text-align: center;
+  font-size: 2rem !important;
+  font-family: "Pretendard";
+  font-weight: 400;
+  background: #fff;
+  color: #333;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+  -webkit-appearance: none;
+}
+
+
+.budget-input[type="number"] {
+  -moz-appearance: textfield;
+}
+.budget-input[type="number"]::-webkit-outer-spin-button,
+.budget-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.action-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.upload-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.submit-btn {
+  width: 16rem;
+  height: 5rem;
+  background: #0066f9;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  border: none;
+  font-weight: bold;
+  font-family: "Pretendard";
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+.submit-btn.disabled {
+  background: #bbd6ff;
+  color: #ffffffaa;
+  cursor: not-allowed;
+}

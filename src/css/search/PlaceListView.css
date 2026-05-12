@@ -1,0 +1,195 @@
+/* =============================
+   검색 바 영역
+============================= */
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1rem;
+
+  /* tokens */
+  --brand: #0066f9;
+  --brand2: #307ef1;
+  --ring: rgba(0,102,249,.35);
+}
+
+/* 인풋 */
+.search-bar input {
+  width: 30rem;
+  height: 4.3rem;
+  padding-left: 2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #e2e2e2;
+  box-shadow: 0 0.4rem 0.4rem rgba(0,0,0,0.25);
+  font-size: 1.6rem;
+  font-weight: bold;
+  background: #fff;
+  transition: border-color .2s ease, box-shadow .25s ease, background-color .2s ease;
+}
+
+.search-bar input::placeholder {
+  color: #a6a6a6;
+  font-weight: 500;
+}
+
+.search-bar input:hover {
+  border-color: #d6dff8;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: var(--brand2);
+  /* 기존 그림자 유지 + 포커스 링 추가 */
+  box-shadow:
+    0 0.4rem 0.4rem rgba(0,0,0,0.25),
+    0 0 0 3px var(--ring);
+}
+
+/* 검색 버튼 */
+.search-button {
+  position: absolute;
+  right: 11rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: .4rem;
+  border-radius: .6rem;
+  transition: background-color .2s ease, transform .08s ease;
+}
+
+.search-icon {
+  font-size: 1.8rem;
+  color: #757575;
+  transition: color .2s ease;
+}
+
+/* 포커스 상태에서 아이콘 강조 */
+.search-bar:focus-within .search-icon { color: var(--brand2); }
+
+.search-button:hover {
+  background-color: #f3f7ff;
+}
+.search-button:active {
+  transform: translateY(calc(-50% + 1px));
+}
+.search-button:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* 필터 버튼 */
+.filter-btn {
+  margin-left: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: .4rem .6rem;
+  border-radius: .8rem;
+  transition: background-color .2s ease, transform .08s ease;
+}
+.filter-btn:hover { background: #f3f7ff; }
+.filter-btn:active { transform: translateY(1px); }
+.filter-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+
+.filter-icon {
+  font-size: 1.8rem;
+  color: #757575;
+  transition: color .2s ease;
+}
+.search-bar:focus-within .filter-icon { color: var(--brand2); }
+
+/* 안내 텍스트 */
+.intro-text {
+  font-size: 1.6rem;
+  margin-top: 3rem;
+  color: #7f7f7f;
+  animation: sb-fade-in .25s ease both;
+}
+
+/* 카테고리 버튼 영역 */
+.category-buttons {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;            /* 줄바꿈 허용 (좁은 화면 대비) */
+}
+
+/* 카테고리 버튼 */
+.category-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid #93c5fd;
+  background: #fff;
+  color: #3b82f6;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .08s ease, box-shadow .25s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
+
+.category-btn:hover {
+  background-color: #f3f8ff;     /* 과하지 않은 hover */
+  border-color: #6aa8fb;
+}
+.category-btn:active {
+  transform: translateY(1px);
+}
+.category-btn:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* 활성 카테고리(선택 상태) — 선택적으로 .is-active 클래스를 붙여 사용 */
+.category-btn.is-active {
+  background: #eaf2ff;
+  color: #1e66ec;
+  border-color: #6aa8fb;
+  box-shadow: 0 2px 10px rgba(48,126,241,.12);
+}
+
+/* 구분선 */
+.category-divider {
+  border: none;
+  border-top: 0.1px solid #c1c1c1;
+  margin: 3rem 0;
+}
+
+/* 장소 리스트 영역 */
+.place-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 항목 간격 소폭 추가 */
+  animation: sb-fade-in .25s ease both;
+}
+
+/* 하이라이트 블루 */
+.highlight-blue {
+  color: #0066f9;
+  transition: color .25s ease;
+}
+.search-bar:focus-within ~ .highlight-blue,
+.highlight-blue:hover {
+  color: #307ef1;
+}
+
+/* 진입 애니메이션 (미세) */
+@keyframes sb-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 모션 민감 배려 */
+@media (prefers-reduced-motion: reduce) {
+  .search-bar input,
+  .search-button,
+  .filter-btn,
+  .category-btn,
+  .place-list,
+  .intro-text,
+  .highlight-blue {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,387 @@
+/* ========== Hero ========== */
+.test-hero {
+  position: relative;
+  z-index: -99999;                 /* 다음 섹션이 위에서 덮도록 */
+  min-height: 97vh;
+  color: #fff;
+  padding-top: 140px;
+  margin-top: -10rem;
+  overflow: hidden;           /* 배경 레이어 클리핑 */
+}
+
+/* ✅ 페이드 전환 배경 레이어 컨테이너 */
+.hero-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -99999;
+  pointer-events: none;       /* 배경은 클릭 불가 */
+}
+
+/* ✅ 각 슬라이드: 겹쳐놓고 opacity로 페이드 */
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  /* 모바일 fixed 이슈 방지: translateZ로 성능 보정 */
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  opacity: 0;
+  transition: opacity 1.6s ease;  /* JS의 전환 시간과 맞추기 */
+}
+
+.bg-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* 센티넬(표시용 보이지 않는 라인) */
+.hero-sentinel-top,
+.hero-sentinel-bottom {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  visibility: hidden;
+}
+
+/* 중앙 고정 핀 */
+.test-hero__pin {
+  position: fixed;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;                    /* 배경보다 위, 다음 섹션보다 아래 */
+  width: 100%;
+  pointer-events: none;
+}
+.test-hero__pin * { pointer-events: auto; }
+
+/* 히어로 영역 밖에서는 완전 숨김 */
+.test-hero__pin.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* 등장 애니메이션 */
+.test-hero__pin h1 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+  font-weight: 900;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out 0.2s forwards;
+}
+
+.test-hero__pin p {
+  margin: 0 0 2rem;
+  font-size: 5rem;
+  font-weight: 900;
+  opacity: 0.9;
+  visibility: hidden;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out 0.6s forwards;
+}
+
+.scroll-down {
+  margin-top: 3rem;
+  font-size: 1.6rem;
+  color: #fff;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out 1.2s forwards;
+}
+.scroll-text { font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.scroll-icon  { font-size: 2.4rem; animation: bounce 1.5s infinite; }
+
+/* 히어로 내부 여유 (연출) */
+.test-hero__spacer { height: 100vh; }
+
+/* Keyframes */
+@keyframes fadeUp {
+  0%   { visibility: hidden; opacity: 0; transform: translateY(20px); }
+  100% { visibility: visible; opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(8px); }
+}
+
+/* 접근성: 모션 줄이기 설정일 때는 즉시 전환 */
+@media (prefers-reduced-motion: reduce) {
+  .bg-slide { transition: none !important; }
+  .scroll-icon { animation: none !important; }
+}
+
+/* ========== Panel ========== */
+.test-panel {
+  position: relative;
+  z-index: 3;
+
+  margin-top: -15vh;
+  min-height: 100vh;
+  background: #fff;
+  color: #222;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 16rem 2rem;
+}
+
+.title-strip {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.title-eyebrow {
+  margin: 0;
+  font-weight: 800;
+  font-size: 4rem;
+  color: #0066f9;
+}
+.title-main {
+  margin: 0.4rem 0 0;
+  font-weight: 900;
+  font-size: 4rem;
+  color: #111;
+}
+
+/* RotatingTextWave 미세 보정 */
+.title-eyebrow .rtw-wrap {
+  line-height: 1.2;
+}
+.rtw-char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.emoji-row {
+  margin: 7.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15rem;
+}
+.emoji-row li {
+  font-size: 6rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 30rem;
+}
+.panel-left {
+  margin-left: 25rem;
+}
+.panel-left .panel-eyebrow {
+  color: #307ef1;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  font-size: 3rem;
+}
+.panel-left .panel-title {
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0 0 25.6rem;
+}
+.panel-left .panel-sub {
+  color: #555;
+  margin: 0 0 2rem;
+  font-size: 2rem;
+}
+.panel-sub b {
+  color: #0066f9;
+  font-weight: 700;
+}
+/* ===== CTA (카트 아이콘 + 버튼) ===== */
+.panel-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem; /* 아이콘과 버튼 사이 간격 */
+  margin-top: 1.2rem;
+}
+
+/* 왼쪽 카트 아이콘 (이미지처럼 약간 큰 느낌) */
+.panel-cart-icon {
+  width: 7rem; /* 필요시 6~8rem로 미세조정 */
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0.2rem 0.6rem rgba(0, 0, 0, 0.08));
+}
+
+/* 알약형 버튼 본체 */
+.panel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: #0066f9; /* 지정 색상 유지 */
+  color: #fff;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 1.3rem 1.8rem 1.3rem 1.8rem; /* 좌우 패딩 */
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 102, 249, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+  isolation: isolate; /* 화살표 원의 쌓임 맥락 안정화 */
+}
+
+/* 오른쪽 화살표 원 (겹치기) */
+.panel-btn__arrow {
+  position: absolute;
+  right: -1.8rem; /* ✅ 버튼 오른쪽 밖으로 걸쳐 나옴 */
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 2.6rem;
+  height: 2.6rem;
+
+  background: #fff;
+  color: #0066f9;
+  border: 0.24rem solid #0066f9;
+  border-radius: 50%;
+  font-size: 2.4rem;
+  font-weight: 900;
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.06);
+  /* 중앙 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #0066f9;
+  font-size: 2.2rem; /* 글자 크기 조금 줄여서 원 안 여백 확보 */
+  font-weight: 900;
+  line-height: 1; /* ✅ 글리프 위아래 여백 제거 */
+}
+.panel-btn__arrow::before {
+  content: "›"; 
+  transform: translateY(-0.08em); 
+  display: inline-block;
+}
+/* 호버/포커스 미세 인터랙션 (색상 변경 없음) */
+.panel-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.8rem 2rem rgba(0, 102, 249, 0.34);
+}
+.panel-btn:active {
+  transform: translateY(0);
+}
+.panel-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.3rem rgba(0, 102, 249, 0.2),
+    0 0.8rem 2rem rgba(0, 102, 249, 0.34);
+}
+
+/* 반응형(공간 좁을 때 버튼 줄바꿈 방지 & 축소) */
+@media (max-width: 560px) {
+  .panel-cart-icon {
+    width: 6rem;
+  }
+  .panel-btn {
+    font-size: 1.8rem;
+    padding: 1.2rem 1.6rem 1.2rem 2rem;
+  }
+  .panel-btn__arrow {
+    width: 3.2rem;
+    height: 3.2rem;
+    flex-basis: 3.2rem;
+    font-size: 2.2rem;
+  }
+}
+
+/* Panel Right - Icon */
+.panel-right {
+  position: relative;
+  min-height: 600px;
+}
+.icon-stage {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 240px;
+  height: auto;
+  transform: scale(2.5);
+  transform-origin: bottom right;
+  padding-right: 9rem;
+}
+.icon-stage img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== Third Panel ===== */
+.third-panel-container {
+  --third-img-width: 100vw;
+  --third-img-max: 100vw;
+  --third-img-x: 0rem;
+  --third-img-y: 0rem;
+  --third-img-scale: 1;
+  --third-img-rotate: 0deg;
+
+  --third-img-width-m: 56rem;
+  --third-img-x-m: 0rem;
+  --third-img-y-m: 0rem;
+  --third-img-scale-m: 1;
+  --third-img-rotate-m: 0deg;
+
+  position: relative;
+  min-height: 100vh;
+  padding: 0rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.third-panel-container > img {
+  width: var(--third-img-width);
+  max-width: min(100vw, var(--third-img-max));
+  height: auto;
+  display: block;
+  transform: translate(var(--third-img-x), var(--third-img-y))
+    scale(var(--third-img-scale)) rotate(var(--third-img-rotate));
+  transform-origin: center;
+  will-change: transform;
+}
+.third-panel-container.is-left {
+  justify-content: flex-start;
+}
+.third-panel-container.is-right {
+  justify-content: flex-end;
+}
+.third-panel-container.is-top {
+  align-items: flex-start;
+}
+.third-panel-container.is-bottom {
+  align-items: flex-end;
+}
+.third-panel-container.is-abs > img {
+  position: absolute;
+  top: var(--third-top, auto);
+  right: var(--third-right, auto);
+  bottom: var(--third-bottom, auto);
+  left: var(--third-left, auto);
+}
+@media (max-width: 1024px) {
+  .third-panel-container {
+    min-height: 40vh;
+    padding: 3rem 0;
+  }
+  .third-panel-container > img {
+    width: min(88vw, var(--third-img-width-m));
+    transform: translate(var(--third-img-x-m), var(--third-img-y-m))
+      scale(var(--third-img-scale-m)) rotate(var(--third-img-rotate-m));
+  }
+}

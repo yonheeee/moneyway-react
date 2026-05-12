@@ -1,0 +1,62 @@
+
+.input-container {
+    width: 100%;
+    max-width: 50rem; 
+    margin-top: 3rem;
+}
+
+.plan-name-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1rem solid #BBD6FF; 
+    padding: 0.5rem 0.3125rem; 
+    font-size: 2rem !important; 
+    font-weight: 600;
+    text-align: left;
+    transition: border-color 0.2s;
+}
+
+.plan-name-input:focus {
+    outline: none;
+    border-bottom-color: #BBD6FF;
+}
+
+.plan-name-input::placeholder {
+    color: #bdbdbd;
+}
+
+.complete-button {
+    width: 100%;
+    max-width: 60rem;
+    padding: 2rem; 
+    margin-top: 10rem; 
+    background-color: #0066F9;
+    border: none;
+    border-radius: 1rem; 
+    color: white;
+    font-size: 2rem; 
+    font-weight: bold;
+    cursor: pointer;
+    position: fixed;
+    bottom: 10%;
+    transition: background-color 0.3s;
+}
+
+
+.complete-button:disabled {
+    background-color: #BBD6FF;
+    color: white;
+    cursor: not-allowed;
+}
+
+.loader-overlay {
+    position: fixed;
+    inset: 0;                   
+    background: #ffffff;        
+    z-index: 10000;             
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}

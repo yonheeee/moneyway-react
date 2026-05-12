@@ -1,0 +1,56 @@
+.options-container, .period-options-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 50rem; 
+    gap: 1.875rem; 
+}
+
+.option-button, .period-option {
+    width: 100%;
+    padding: 1.875rem; 
+    font-size: 1.7rem; 
+    font-weight: 500;
+    color: #333;
+    background-color: white;
+    border: none;
+    box-shadow:2px 2px 10px rgba(0, 0, 0, 0.12);
+    border-radius: 5rem; 
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+.option-button:hover, .period-option:hover {
+    border-color: #BBD6FF;
+}
+
+.option-button.selected, .period-option.selected {
+    border-color: #BBD6FF;
+    box-shadow: 0 0 0 0.125rem #BBD6FF;
+    color: #307EF1;
+}
+
+
+.next-button {
+    width: 100%;
+    max-width: 60rem; 
+    padding: 2rem;
+    margin-top: 10rem;
+    background-color: #BBD6FF; 
+    border: none;
+    border-radius: 1rem;
+    color: white; 
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s, background-color 0.3s; 
+}
+
+
+.next-button:disabled {
+    background-color: #BBD6FF; 
+    color: white; 
+    cursor: not-allowed;
+    opacity: 0.7; 
+}

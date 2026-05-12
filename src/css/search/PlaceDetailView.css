@@ -1,0 +1,418 @@
+/* =============================
+   상세 페이지 전체 컨테이너
+============================= */
+.place-detail {
+  padding: 3rem 2rem;
+  height: calc(100vh - 10rem);
+  overflow-y: auto;
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+
+  /* === Tokens / Effects === */
+  --brand: #0066f9;
+  --brand-2: #307ef1;
+  --ink: #333;
+  --muted: #7f7f7f;
+  --card-bg: #fff;
+  --shadow-sm: 0px 1px 1px rgba(0,0,0,0.25);
+  --shadow-md: 0px 2px 2px rgba(0,0,0,0.25);
+  --shadow-lg: 0 8px 20px rgba(0,0,0,0.15);
+  --ring: rgba(0,102,249,0.36);
+  --accent-grad: linear-gradient(90deg, #307ef1, #0066f9);
+  scroll-behavior: auto;
+}
+
+/* 스크롤 페이드 힌트 */
+.place-detail::before,
+.place-detail::after {
+  content: "";
+  position: sticky;
+  display: block;
+  height: 2.4rem;
+  pointer-events: none;
+  z-index: 1;
+}
+.place-detail::before {
+  top: 0;
+  background: linear-gradient(#f6f6f6, rgba(246,246,246,0));
+}
+.place-detail::after {
+  bottom: 0;
+  background: linear-gradient(rgba(246,246,246,0), #f6f6f6);
+}
+
+/* 스크롤바 (WebKit) */
+.place-detail::-webkit-scrollbar { width: 8px; }
+.place-detail::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #cfe1ff, #b8d2ff);
+  border-radius: 8px;
+}
+.place-detail::-webkit-scrollbar-track { background: transparent; }
+
+/* =============================
+   헤더 영역
+============================= */
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 뒤로가기 버튼: 왼쪽으로 이동 + 스크롤 고정 */
+.back-btn {
+  position: fixed;         /* ✅ 스크롤해도 화면에 고정 */
+  left: 3.2rem !important;            /* ✅ 왼쪽에 더 붙임 */
+  top: 18.5rem !important;             /* 헤더 높이에 맞춰 조정 */
+  z-index: 1000;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: #333;
+  cursor: pointer;
+  margin-left: 0;          /* 기존 여백 제거 */
+  transition: transform .15s ease, color .2s ease;
+}
+.back-btn:hover { transform: translateX(-.2rem) rotate(-5deg); color: var(--brand-2); }
+.back-btn:active { transform: translateX(-.1rem) scale(.98); }
+.back-btn:focus-visible { outline: 3px solid var(--ring); border-radius: .6rem; }
+
+/* (선택) 노치/세이프 에어리어 대응 */
+@supports (padding: max(0px)) {
+  .back-btn {
+    left: max(1.2rem, env(safe-area-inset-left, 0px) + 1.2rem);
+    top:  max(8.8rem, env(safe-area-inset-top, 0px) + 1.2rem);
+  }
+}
+
+/* (선택) 모바일에서 조금 더 붙이기 */
+@media (max-width: 640px) {
+  .back-btn {
+    left: 0.8rem;
+    top: 7.6rem;
+    font-size: 2.6rem;
+  }
+}
+
+/* 타이틀 */
+.title-section h2 {
+  font-size: 3.8rem;
+  font-weight: bold;
+  margin: 0;
+
+  /* 밑줄 이펙트 */
+  position: relative;
+  display: inline-block;
+}
+.title-section h2::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -6px;
+  width: 100%; height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(48,126,241,.2), rgba(0,102,249,.2));
+  transform: scaleX(.3);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+.title-section h2:hover::after { transform: scaleX(1); }
+
+/* 메타 정보 */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.meta .category {
+  background-color: #ddd;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  transition: background .2s ease, transform .08s ease, box-shadow .2s ease;
+  box-shadow: var(--shadow-sm);
+}
+.meta .category:hover {
+  background: #eaf2ff;
+  box-shadow: 0 2px 8px rgba(48,126,241,.18);
+}
+.meta .category:active { transform: translateY(1px); }
+.meta .rating svg { font-size: 1.8rem; }
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.rating-wrap {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+}
+
+.star-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.rating-num {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.no-rating {
+  font-size: 1.3rem;
+  color: #999;
+}
+
+/* =============================
+   이미지 영역
+============================= */
+.image-section {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.image-card {
+  flex: 1;
+  height: 31rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #eee;
+
+  /* 효과 */
+  position: relative;
+  transition: box-shadow .2s ease, transform .15s ease;
+  box-shadow: var(--shadow-md);
+}
+.image-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(120% 80% at 100% 0%, rgba(0,0,0,.08), transparent 60%);
+  opacity: 0; transition: opacity .2s ease;
+}
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+.image-card:hover { transform: translateY(-.2rem); box-shadow: var(--shadow-lg); }
+.image-card:hover img { transform: scale(1.04); }
+.image-card:hover::after { opacity: 1; }
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #ddd;
+}
+
+/* =============================
+   액션 버튼 영역
+============================= */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+}
+.action-buttons button {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  background-color: #fff;
+  color: #307ef1;
+  border-radius: 1.8rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--accent-grad) border-box;
+  transition: transform .08s ease, filter .2s ease, box-shadow .2s ease;
+}
+.action-buttons button:hover { filter: brightness(1.02); box-shadow: 0px 4px 14px rgba(48,126,241,.18); }
+.action-buttons button:active { transform: translateY(1px); }
+.action-buttons button:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+
+/* CSS-only ripple */
+.action-buttons button::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 10px; height: 10px;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(48,126,241,.22) 0%, rgba(48,126,241,0) 70%);
+  transition: transform .5s ease, opacity .6s ease;
+  opacity: 0;
+}
+.action-buttons button:active::after {
+  transform: translate(-50%, -50%) scale(12);
+  opacity: 1;
+}
+
+/* 하단 동그란 액션 버튼들 */
+.bottom-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.6rem;
+}
+
+.circle-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.circle-icon {
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 50%;
+  border: 1px solid #cfe2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1967ff;
+  box-shadow: var(--shadow-sm);
+  background-color: #fff;
+}
+
+.circle-label { margin-top: .8rem; font-size: 1.4rem; color: var(--ink); }
+
+/* =============================
+   정보 영역
+============================= */
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  border: none;
+  border-radius: 1.3rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  transition: box-shadow .2s ease, transform .15s ease, background .2s ease;
+}
+
+.info-row {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.info-icon {
+  font-size: 2rem;
+  color: #3478f6;
+  margin-top: 0.7rem;
+  transition: transform .15s ease, color .2s ease;
+}
+
+.info-title {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.info-desc {
+  font-size: 1.4rem;
+  color: #7f7f7f;
+  margin-top: 0.4rem;
+}
+
+/* =============================
+   태그 영역
+============================= */
+.tag-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+.tag-chip {
+  background-color: #e1ecf4;
+  color: #3178c6;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  transition: background .2s ease, transform .08s ease, box-shadow .2s ease;
+  box-shadow: var(--shadow-sm);
+}
+.tag-chip:hover {
+  background: #eaf2ff;
+  box-shadow: 0 2px 8px rgba(48,126,241,.18);
+}
+.tag-chip:active { transform: translateY(1px); }
+
+/* =============================
+   일정 추가 버튼
+============================= */
+.schedule-btn {
+  padding: 1.2rem;
+  height: 8rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  background-color: #0066f9;
+  color: #fff;
+  border: none;
+  border-radius: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(90deg, #0066f9, #307ef1);
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease, background-position .45s ease;
+  background-size: 200% 100%;
+  background-position: 0 0;
+}
+.schedule-btn:hover {
+  transform: translateY(-.2rem);
+  box-shadow: var(--shadow-lg);
+  background-position: 100% 0;
+  filter: brightness(1.03);
+}
+.schedule-btn:active { transform: translateY(.1rem) scale(.995); }
+.schedule-btn:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+
+/* =============================
+   섹션 등장 애니메이션
+============================= */
+.detail-header, .image-section, .action-buttons, .info-section, .tag-section, .schedule-btn {
+  animation: d-fade-up .45s ease both;
+}
+.detail-header   { animation-delay: 0s; }
+.image-section   { animation-delay: .05s; }
+.action-buttons  { animation-delay: .10s; }
+.info-section    { animation-delay: .15s; }
+.tag-section     { animation-delay: .20s; }
+.schedule-btn    { animation-delay: .25s; }
+
+@keyframes d-fade-up {
+  from { opacity: 0; transform: translateY(.6rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================
+   모션 민감 사용자 배려
+============================= */
+@media (prefers-reduced-motion: reduce) {
+  .place-detail, .back-btn, .title-section h2::after, .image-card, .action-buttons button,
+  .info-section, .info-row::before, .tag-chip, .schedule-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+}

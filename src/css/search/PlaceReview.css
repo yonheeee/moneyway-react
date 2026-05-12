@@ -1,0 +1,210 @@
+/* =============================
+   Review (작성자 + 내용만)
+   - 상세페이지 톤에 맞춘 화이트 카드 / 얕은 그림자 / 동일 라운드
+   - 브랜드 블루 포인트 & 마이크로 인터랙션 추가
+============================= */
+
+/* 팔레트 (섹션 로컬 변수) */
+.reviews {
+  --brand: #0066F9;
+  --brand-2: #0066F9;
+  --ink: #333;
+  --muted: #7f7f7f;
+  --card-bg: #fff;
+  --card-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  --ring: rgba(0, 102, 249, 0.35);
+  --accent-grad: linear-gradient(180deg, #307ef1, #0066f9);
+}
+
+/* 섹션 래퍼 */
+.reviews {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 헤더: 제목 + 개수 */
+.reviews__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0 1.2rem;
+}
+
+.reviews__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ink);
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+/* 타이틀 앞 파란 점 */
+.reviews__title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: .6rem;
+  height: .6rem;
+  border-radius: 50%;
+  background: var(--accent-grad);
+  box-shadow: 0 0 0 3px rgba(48,126,241,.15);
+}
+
+.reviews__meta {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+.reviews__count {
+  color: var(--brand-2);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: .2rem .8rem;
+  border-radius: 999px;
+  background: #eaf2ff;
+  border: 1px solid #d7e6ff;
+}
+
+/* 리스트 */
+.rv-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.6rem;
+}
+
+
+/* 리뷰 아이템 카드 (정보 카드 스타일과 통일) */
+.rv-item {
+  position: relative;
+  background: var(--card-bg);
+  border: none;
+  border-radius: 1.3rem; /* info-section과 동일 라운드 */
+  box-shadow: var(--card-shadow);
+  padding: 1.6rem 2rem;
+  overflow: hidden;
+  transition: box-shadow .2s ease, transform .15s ease, background .2s ease;
+  animation: rv-fade-up .4s ease both;
+}
+
+/* 작성자명 */
+.rv-name {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--ink);
+  position: relative;
+  padding-left: 1rem;
+}
+
+
+/* 내용 */
+.rv-content {
+  font-size: 1.4rem;
+  color: var(--muted); /* info-desc와 동일 톤 */
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* 큰 따옴표 라이트 데코 */
+.rv-content::before {
+  content: "“";
+  margin-right: .6rem;
+  color: #cfe1ff;
+  font-size: 1.8rem;
+  vertical-align: baseline;
+}
+/* 텍스트 선택 색 */
+.rv-content::selection { background: rgba(48,126,241,.18); }
+.rv-name::selection { background: rgba(48,126,241,.18); }
+
+/* 빈 상태 */
+.rv-empty {
+  color: var(--muted);
+  font-size: 1.4rem;
+  padding: 1.2rem 0;
+  text-align: center;
+}
+
+/* 더보기 버튼: 그라디언트 보더 */
+.rv-more-list {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-radius: 1.8rem;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(90deg, #307ef1, #0066f9) border-box;
+  color: #1f5fe6;
+  cursor: pointer;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.15);
+  transition: transform .08s ease, filter .2s ease, background .2s ease;
+}
+.rv-more-list:hover {
+  filter: brightness(1.02);
+  background:
+    linear-gradient(#f7fbff, #f7fbff) padding-box,
+    linear-gradient(90deg, #307ef1, #0066f9) border-box;
+}
+.rv-more-list:active { transform: translateY(1px); }
+
+/* 접근성: 포커스 표시 */
+.rv-more-list:focus-visible {
+  outline: 3px solid var(--ring); /* #0066f9 포커스 링 */
+  outline-offset: 2px;
+}
+
+/* 스켈레톤 (로딩) */
+.rv-item.rv-skeleton {
+  padding: 1.6rem 2rem;
+}
+
+.rv-item.rv-skeleton .sk {
+  background: linear-gradient(90deg, #f0f5ff, #e6efff, #f0f5ff);
+  background-size: 200% 100%;
+  animation: rv-shimmer 1.2s infinite;
+  border-radius: .6rem;
+}
+
+.rv-item.rv-skeleton .sk-line {
+  width: 12rem;
+  height: 1.6rem;
+  margin-bottom: .8rem;
+}
+
+.rv-item.rv-skeleton .sk-block {
+  width: 100%;
+  height: 4.2rem;
+}
+
+@keyframes rv-shimmer {
+  0% { background-position: 0 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 등장 애니메이션 + 스태거 */
+@keyframes rv-fade-up {
+  from { opacity: 0; transform: translateY(.6rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rv-list > .rv-item:nth-child(1) { animation-delay: 0s; }
+.rv-list > .rv-item:nth-child(2) { animation-delay: .05s; }
+.rv-list > .rv-item:nth-child(3) { animation-delay: .1s; }
+.rv-list > .rv-item:nth-child(4) { animation-delay: .15s; }
+.rv-list > .rv-item:nth-child(5) { animation-delay: .2s; }
+
+/* 모션 민감 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+  .rv-item,
+  .rv-item::before,
+  .rv-more-list {
+    transition: none !important;
+    animation: none !important;
+  }
+}

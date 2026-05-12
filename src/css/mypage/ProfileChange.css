@@ -1,0 +1,283 @@
+/* ProfileChange.css — 좌측 프로필 + 우측 설정 패널 레이아웃 & 상태 스타일 */
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 28rem 1fr; /* 좌측 프로필 카드 + 우측 메인 */
+  gap: 2.4rem;
+  width: 100%;
+  max-width: 110rem;
+  margin: 0 auto;
+  padding: 2.4rem 1.6rem;
+}
+
+.profile-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+.profile-card {
+  position: sticky;
+  top: 2rem;
+}
+
+.profile-actions {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* 우측 메인 */
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.panel {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 1.6rem;
+  padding: 2.4rem;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+}
+.panel.danger {
+  border-color: rgba(255, 0, 0, 0.12);
+}
+
+.panel-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.panel-subtitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+.muted {
+  color: #8b8b8b;
+  font-size: 1.3rem;
+}
+
+/* 폼 행 */
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.form-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  min-width: 10rem;
+}
+.field-inline {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 0.8rem;
+  padding: 1rem 1.2rem;
+  font-size: 1.6rem;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease,
+    background-color 0.16s ease;
+}
+.input:focus {
+  outline: none;
+  border-color: #6ba8ff;
+  box-shadow: 0 0 0 3px rgba(107, 168, 255, 0.2);
+}
+/* 닉네임 변경 감지 시 살짝 하이라이트 */
+.input.input-dirty {
+  border-color: #6ba8ff;
+  background-color: #f8fbff;
+  box-shadow: 0 0 0 3px rgba(107, 168, 255, 0.14);
+}
+
+.submit-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.6rem;
+}
+
+/* 색 토큰 */
+:root {
+  --blue: #2f6bff;
+  --blue-dark: #2151d8;
+  --gray: #f8f9fb;
+  --gray-border: rgba(0, 0, 0, 0.12);
+  --danger: #f02a2a;
+  --danger-dark: #d62424;
+}
+
+/* 버튼 공통 */
+button {
+  transition: background-color 0.16s ease, color 0.16s ease,
+    border-color 0.16s ease, box-shadow 0.16s ease, transform 0.08s ease;
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 프라이머리 (저장하기) — 상태에 따라 색 전환 */
+.btn-primary {
+  padding: 1rem 1.3rem;
+  border-radius: 0.8rem;
+  border: none;
+  font-weight: 700;
+}
+/* 활성: 변경됨 & 유효 */
+.btn-primary.is-active {
+  background: var(--blue);
+  color: #fff;
+}
+.btn-primary.is-active:hover {
+  background: var(--blue-dark);
+  box-shadow: 0 6px 18px rgba(47, 107, 255, 0.25);
+}
+.btn-primary.is-active:active {
+  transform: translateY(1px);
+}
+/* 비활성: 변경 없음/3자 미만/저장중 */
+.btn-primary.is-idle {
+  background: #dfe6ff;
+  color: #fff;
+}
+
+/* 아웃라인 (변경하기 등) */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--gray-border);
+  border-radius: 0.8rem;
+  background: #fff;
+  font-weight: 600;
+}
+.btn-outline:hover:not(:disabled) {
+  background: #f3f6ff;
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.btn-outline:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* 서브틀 (중복확인) */
+.btn-subtle {
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--gray-border);
+  border-radius: 0.8rem;
+  background: var(--gray);
+  font-weight: 600;
+}
+.btn-subtle:hover:not(:disabled) {
+  background: #eef3ff;
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.btn-subtle:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* 고스트 (로그아웃 등 필요시) */
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: #6b6b6b;
+  text-decoration: underline;
+  padding: 0.6rem 0.4rem;
+  align-self: flex-start;
+}
+.btn-ghost:hover:not(:disabled) {
+  color: #1d5fe9;
+}
+.btn-ghost:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* 위험 (탈퇴) */
+.btn-danger {
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  background: #fff4f4;
+  color: var(--danger);
+  font-weight: 700;
+}
+.btn-danger:hover:not(:disabled) {
+  background: #ffecec;
+  border-color: var(--danger);
+  color: var(--danger-dark);
+}
+.btn-danger:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.danger-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.2rem;
+}
+
+/* 반응형 */
+@media (max-width: 960px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+  .profile-card {
+    position: static;
+  }
+}
+/* ... 기존 스타일 유지 ... */
+
+/* input-dirty → 값이 변경됨 */
+.input.input-dirty {
+  border-color: #6ba8ff;
+  background-color: #f8fbff;
+  box-shadow: 0 0 0 3px rgba(107, 168, 255, 0.14);
+}
+
+/* 저장 버튼 상태 */
+.btn-primary.is-active {
+  background: var(--blue);
+  color: #fff;
+}
+.btn-primary.is-idle {
+  background: #dfe6ff;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* 중복확인 버튼 */
+.btn-subtle {
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--gray-border);
+  border-radius: 0.8rem;
+  background: var(--gray);
+  font-weight: 600;
+}
+.btn-subtle:hover:not(:disabled) {
+  background: #eef3ff;
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.btn-subtle:disabled {
+  background: #f1f1f1;
+  color: #999;
+  cursor: not-allowed;
+}

@@ -1,0 +1,211 @@
+/*2번째 페이지*/
+.plan-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 75rem;
+  background: #eff8fc;
+  gap: 8vw;
+  box-sizing: border-box;
+}
+
+.plan-form-left {
+  width: 100%;
+  max-width: 60rem;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-top: -3rem;
+}
+
+.plan-title-card {
+  width: 30rem;
+  height: 4rem;
+  margin-bottom: 10rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  text-align: center;
+}
+
+.plan-title-card h2 {
+  color: #2176ff;
+  font-size: 2.3rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.plan-form-right {
+  flex: 1;
+  max-width: 50rem;
+  margin: 10rem 0;
+}
+
+.plan-image-box {
+  position: relative;
+  width: 200%;
+  height: 50rem;
+  border-radius: 2.3rem;
+  box-shadow: 0 0.6rem 3.2rem 0 rgba(70, 100, 180, 0.12);
+}
+.plan-image {
+  width: 100%;
+  height: 100%;
+}
+.plan-image-title {
+  position: absolute;
+  top: 5rem;
+  left: 10rem;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-shadow: 0 0.2rem 1rem rgba(10, 60, 120, 0.17);
+  letter-spacing: 0.01em;
+  line-height: 1.8;
+}
+.plan-title-bar {
+  display: inline-block;
+  width: 17rem;
+  height: 0.1rem;
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 0.2rem;
+  margin-left: 0.65rem;
+  margin-bottom: 0.27rem;
+}
+
+.selector-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.2rem;
+  box-sizing: border-box;
+}
+
+.selector-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 0.1rem solid #d9d9d9;
+  border-radius: 5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1.3rem;
+  color: #222;
+  gap: 0.8rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.selector-options {
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 0.8rem);
+  left: 0;
+  background: white;
+  border-radius: 2rem;
+  box-shadow: 0 0.4rem 2rem rgba(0, 0, 0, 0.1);
+  padding: 0.8rem;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.selector-option-item {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1.3rem;
+  border-radius: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #555;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.selector-option-item .icon {
+  font-size: 1.3rem;
+  color: #2176ff;
+}
+
+.selector-option-item:hover {
+  background-color: #f7f7f9;
+}
+
+.selector-option-item.selected {
+  background-color: #f0f4ff;
+  color: #2176ff;
+  font-weight: 800;
+}
+
+.selector-row .placeholder {
+  color: #888;
+  font-weight: 500;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  display: block;
+}
+
+.react-datepicker__input-container input {
+  display: none;
+}
+
+.plan-submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 5rem;
+  background: #0066f9;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.6rem;
+  border: none;
+  padding: 1.3rem 0;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.plan-submit .icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.plan-direct {
+  width: 100%;
+  color: #555;
+  font-size: 1.4rem;
+  text-align: right;
+  margin-top: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.plan-title-input-wrapper {
+  width: 100%;
+  margin-bottom: 1.2rem;
+  box-sizing: border-box;
+  font-size: 1.5rem;
+  border-radius: 5rem;
+}
+.plan-title-input::placeholder {
+  color: #888;
+  font-size: 1.5rem;
+}
+
+.plan-title-input {
+  width: 100%;
+  padding: 1.4rem;
+  color: #222;
+  font-size: 1.5rem;
+  border: 0.1rem solid #d9d9d9;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  text-align: center; /* selector-row와 동일하게 중앙 정렬 */
+}

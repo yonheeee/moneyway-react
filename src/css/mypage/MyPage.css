@@ -1,0 +1,132 @@
+/* 전역 변수: 헤더 높이 / 겹침 정도 */
+:root {
+  --header-h: 0rem;     /* ✅ 실제 Header 높이에 맞게 조정 */
+  --nav-overlap: 35rem; /* ✅ profile과 nav가 겹치는 정도(Y축으로 nav 끌어올림) */
+}
+
+/* =========================
+   MyPage – Base
+========================= */
+.main-container {
+  background-color: white;
+  min-height: calc(100vh - 16rem);
+  animation: container-in 0.26s ease both;
+}
+
+.main-container.edit-mode {
+  background-color: white;
+}
+
+/* 프로필 컨테이너만 sticky (카드는 일반 배치)
+   - 폭을 카드 정도로 제한해서 nav 클릭 가로채지 않게
+   - 컨테이너는 pointer-events: none (겹친 부분은 클릭 통과)
+   - 카드 내부는 다시 auto로 복원 (Profile.css에서 처리)
+*/
+.profile-container {
+  width: 22rem;                 /* 카드 폭 + 여유 */
+  margin-left: 7rem;
+  position: sticky;             /* ✅ 스크롤 시 고정 */
+  top: calc(var(--header-h) + 1rem);
+  z-index: 20;                  /* nav(10)보다 위 */
+  pointer-events: none;         /* 컨테이너는 클릭 통과 */
+  animation: profile-in 0.3s ease both;
+}
+
+/* =========================
+   Nav bar
+========================= */
+.nav-bar {
+  position: sticky;
+  top: var(--header-h);                      /* 헤더 바로 아래에 붙임 */
+  margin-top: calc(-1 * var(--nav-overlap)); /* Y축으로 끌어올려 profile과 겹치기 */
+  z-index: 10;                               /* profile(20)보다 낮게 */
+  background-color: white;                   /* 겹칠 때 깔끔하게 */
+  border-bottom: 1px solid #f2f2f2;
+  pointer-events: auto;                      /* nav는 항상 클릭 가능 */
+
+  --accent: #0066f9; /* 포인트 컬러 */
+  width: 100%;
+  display: flex;
+  gap: 10rem;
+  padding: 3rem 60rem;
+}
+
+.nav-bar button {
+  border: none;
+  cursor: pointer;
+  font-size: 2.4rem;
+  color: #c1c1c1;
+  background-color: white;
+  position: relative;
+  transition: color 0.18s ease, transform 0.08s ease, filter 0.18s ease;
+}
+
+/* 호버/프레스 */
+.nav-bar button:hover { color: #111; filter: brightness(0.98); }
+.nav-bar button:active { transform: translateY(1px); }
+
+/* 포커스 링 */
+.nav-bar button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.28rem rgba(0, 102, 249, 0.28);
+  border-radius: 0.6rem;
+}
+
+/* 활성 탭 */
+.nav-bar button.active { color: var(--accent); font-weight: 700; }
+
+/* 밑줄(슬라이드 언더라인) */
+.nav-bar button::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -0.6rem;
+  width: 100%; height: 0.24rem;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+  border-radius: 0.24rem;
+}
+.nav-bar button:hover::after,
+.nav-bar button.active::after { transform: scaleX(1); }
+
+/* =========================
+   Sub container
+========================= */
+.sub-container { animation: panel-in 0.26s ease both; }
+
+/* =========================
+   Keyframes
+========================= */
+@keyframes container-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes profile-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   Reduced motion
+========================= */
+@media (prefers-reduced-motion: reduce) {
+  .main-container,
+  .profile-container,
+  .sub-container,
+  .nav-bar button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================
+   Responsive (옵션)
+========================= */
+@media (max-width: 768px) {
+  :root { --nav-overlap: 3.5rem; } /* 모바일에서 겹침 완화 */
+}

@@ -1,0 +1,214 @@
+/* =============================
+   Brand
+============================= */
+:root {
+  --brand: rgb(33,118,255);
+  --ink: #000;
+  --muted: #C1C1C1;
+  --border: #E0E0E0;
+  --elev: rgba(0, 0, 0, 0.1);
+}
+
+/* Header.css */
+.header.white-bg {
+  background-color: #fff;
+}
+
+
+/* =============================
+   Header 레이아웃 및 구조
+============================= */
+.header {
+  background-color: transparent;
+  width: 100%;
+  height: 10rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 1000;
+}
+.header-top { width: 95%; height: 40%; }
+.header-top-container {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.4rem; gap: 1rem; flex-wrap: wrap;
+}
+
+/* =============================
+   로고/네비게이션
+============================= */
+.logo-area {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .2rem 0; /* 클릭/포커스 여유 */
+}
+.logo-area img {
+  width: 18.4rem; height: 3.7rem; vertical-align: middle;
+  transition: transform .18s ease, filter .25s ease, box-shadow .25s ease;
+  will-change: transform;
+}
+/* ✨ 은은한 hover */
+.logo-area:hover img {
+  transform: translateY(-0.5px) scale(1.006);
+  filter: saturate(1.005) brightness(1.01);
+  box-shadow: 0 1px 6px rgba(33,118,255,.06);
+}
+/* ✨ 샤인 스윕(더 은은) */
+.logo-area::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    75deg,
+    transparent 0%,
+    rgba(33,118,255,.05) 45%,
+    rgba(33,118,255,.10) 50%,
+    rgba(33,118,255,.05) 55%,
+    transparent 100%
+  );
+  transform: translateX(-110%) skewX(-6deg);
+  opacity: 0;
+  transition: transform .8s ease, opacity .3s ease;
+  border-radius: .4rem;
+}
+.logo-area:hover::after {
+  opacity: .6;
+  transform: translateX(40%) skewX(-6deg);
+}
+
+/* 로고를 링크로 쓰는 경우 포커스 링 */
+.logo-area a,
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .6rem;
+}
+.logo-area a:focus-visible,
+.logo-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 .25rem rgba(33,118,255, .16);
+}
+
+/* (선택) 헤더 축소 상태 */
+.header.is-scrolled .logo-area img {
+  transform: scale(.985);
+  filter: brightness(.98);
+  box-shadow: none;
+}
+
+.navbar-container {
+  display: flex; align-items: center; gap: 1.9rem;
+  list-style: none; margin: 0; padding: 0;
+}
+.nav-item { display: flex; align-items: center; }
+
+/* 버튼/링크 베이스 */
+.nav-link {
+  position: relative; /* underline 애니메이션용 */
+  display: flex; align-items: center; justify-content: center;
+  color: inherit; text-decoration: none; background-color: #fff;
+  border: none; cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  outline: none;
+  background: transparent;
+}
+/* 제주 블루로 컬러 전환 + 아주 미세 리프트 */
+.nav-link:hover { color: var(--brand); transform: translateY(-0.1rem); }
+/* 밑줄 슬라이드 (좌->우) + 투명도 완화 */
+.nav-link::after {
+  content: "";
+  position: absolute; left: 0; bottom: -0.2rem;
+  width: 100%; height: 0.2rem;
+  background-color: var(--brand);
+  transform: scaleX(0); transform-origin: right;
+  opacity: .65;
+  transition: transform 0.3s ease, opacity .3s ease;
+}
+.nav-link:hover::after { transform: scaleX(1); transform-origin: left; opacity: .85; }
+/* 접근성: 키보드 포커스 가시화 (조금 더 부드럽게) */
+.nav-link:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(33,118,255,0.16);
+  border-radius: 0.4rem;
+}
+
+/* 아이콘 */
+.nav-icon {
+  height: 3.2rem; width: 3.2rem; object-fit: contain; display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* 링크 hover 시 아이콘도 아주 살짝 */
+.nav-link:hover .nav-icon { transform: translateY(-0.05rem) scale(1.01); opacity: .92; }
+
+
+.myplan{
+  font-size: 1.8rem; color: var(--ink); font-weight: 500;
+  letter-spacing: 0.5px; margin: 0 0.2rem;
+  transition: color 0.3s ease;
+};
+
+.nav-link:hover .myplan{ color: var(--brand); }
+
+.tutorial-modal {
+  font-size: 1.8rem;
+  color: var(--ink);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin: 0 0.2rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover .tutorial-modal {
+  color: var(--brand);
+}
+
+
+/* =============================
+   사이드 메뉴/오버레이
+============================= */
+.close-btn {
+  background: none; border: none; font-size: 5rem;
+  position: absolute; top: 1rem; right: 2.7rem; cursor: pointer;
+  line-height: 1; color: #222;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+/* 닫기 버튼: 회전/스케일을 더 은은하게 */
+.close-btn:hover { color: var(--brand); transform: rotate(30deg) scale(1.03); }
+.close-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(33,118,255,0.16);
+  border-radius: 0.6rem;
+}
+
+/* =============================
+   사용자 정보/프로필
+============================= */
+.welcome-text {
+  font-size: 1.6rem; color: var(--muted);
+  white-space: nowrap; margin-left: 1.7rem; margin-top: 0.7rem; flex-shrink: 0;
+}
+.nickname-text { margin-right: 0.3rem; }
+.profile-image-header {
+  width: 4rem; height: 4rem; border-radius: 50%; object-fit: cover;
+  box-shadow: 0 0 0 0.2rem rgba(0,0,0,0.03);
+}
+
+/* =============================
+   환경설정: 모션 최소화
+============================= */
+@media (prefers-reduced-motion: reduce) {
+  .nav-link, .nav-icon, .close-btn,
+  .logo-area img, .logo-area::after, .logo-link {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .nav-link::after { transition: none !important; }
+}

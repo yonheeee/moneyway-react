@@ -1,0 +1,188 @@
+
+/* =============================
+   헤더
+============================= */
+.header {
+  position: relative;
+  z-index: 10;
+}
+
+
+/* =============================
+   회원가입 전체 컨테이너
+============================= */
+.signup-container {
+  display: flex;
+  overflow: hidden;
+}
+
+
+/* 좌측 이미지 영역 */
+.signup-image {
+  position: absolute;
+  flex: 0 0 6.8rem;
+  background-color: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  top: 0;
+}
+
+
+.signup-image img {
+  width: 68rem;
+  height: 96rem;
+  object-fit: cover;
+  z-index: -1;
+  top: 0;
+}
+
+
+/* 회원가입 폼 영역 */
+.signup-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5rem;
+  font-size: 2.4rem;
+  margin: auto;
+  margin-left: 77rem;
+  margin-right: 26rem;
+}
+
+
+.signup-form h1 {
+  font-size: 4.8rem;
+  font-weight: bold;
+  margin-bottom: 6.5rem;
+}
+
+
+.signup-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+
+/* 인풋 행 */
+.input-row {
+  width: 76.5rem;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  margin-bottom: 1rem;
+}
+
+
+/* 인풋 필드 */
+.input-field {
+  width: 76.5rem;
+  height: 4.5rem;
+  flex: 1;
+  font-size: 2.4rem;
+  padding: 0.6rem 0;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+
+.input-field[disabled] {
+  background-color: #fff;
+  color: #c1c1c1;
+  cursor: not-allowed;
+}
+
+
+.input-field::placeholder {
+  color: #c1c1c1;
+  font-weight: bold;
+  opacity: 1;
+}
+
+
+/* 인풋 상태별 스타일 */
+.input-field.checked {
+  border-bottom: 2px solid #0066f9; /* 중복 확인 완료 */
+}
+.input-field.error {
+  border-bottom: 2px solid #ff4d4f; /* 빨간 테두리 */
+}
+.input-field.success {
+  border-bottom: 2px solid #28a745; /* 초록 테두리 */
+}
+
+
+/* 메시지 영역 */
+.error-message {
+  font-size: 1.8rem;
+  color: #f02a2a;
+  margin-top: -1.5em;
+}
+.success-message {
+  color: #28a745;
+  font-size: 1.8rem;
+  margin-top: -1.5em;
+}
+
+
+/* 중복확인 버튼 */
+.btn-check {
+  background-color: #0066f9;
+  border: 1px solid #0066f9;
+  color: #fff;
+  padding: 0 1rem;
+  font-size: 1.8rem;
+  border-radius: 1.2rem;
+  width: 15rem;
+  height: 4.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.btn-check:hover {
+  background-color: #3788f8;
+  border-color: #3788f8;
+  color: #fff;
+}
+.btn-check.active {
+  background-color: #fff;
+  border-color: #c1c1c1;
+  color: #bbd6ff;
+}
+
+
+/* 회원가입 제출 버튼 */
+.btn-submit {
+  width: 76.5rem;
+  height: 8rem;
+  padding: 1.2rem;
+  font-size: 2.4rem;
+  background-color: #0066f9;
+  color: #fff;
+  border: none;
+  border-radius: 1.2rem;
+  margin-top: 2rem;
+  cursor: not-allowed;
+  transition: background-color 0.3s;
+}
+.btn-submit:enabled {
+  cursor: pointer;
+}
+.btn-submit:disabled {
+  background-color: #bbd6ff;
+}
+
+
+/* 로그인 링크 */
+.login-link {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+.login-link a {
+  font-weight: 700;
+  color: #0066f9;
+  text-decoration: none;
+}

@@ -1,0 +1,120 @@
+
+/* =============================
+   LoginPage 레이아웃
+============================= */
+.login-container {
+  display: flex;
+  flex-direction: column;
+}
+.login-header {
+  margin-top: 3%;
+  margin-left: 18rem;
+  margin-bottom: 5%;
+}
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* =============================
+   상단 타이틀/헤더
+============================= */
+.auth-header {
+  position: relative;
+  width: 20.674rem;
+  height: 5.4rem;
+  background: #fff;
+  border-radius: 3rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+  font-size: 2.1rem;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+.auth-header::after {
+  content: "";
+  position: absolute;
+  bottom: -1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 1.3rem 1.3rem 0;
+  border-style: solid;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* =============================
+   소셜 로그인 버튼 영역
+============================= */
+.social-buttons {
+  display: flex;
+  gap: 3.5rem;
+  margin-bottom: 3.2rem;
+}
+.social-btn {
+  width: 9.1rem;
+  height: 9.1rem;
+  border: none;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.kakao-btn {
+  background-color: #fee500;
+}
+.google-btn {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================
+   이메일/로그인 버튼
+============================= */
+
+/* =============================
+   이메일/로그인 버튼
+============================= */
+.email-btn {
+  width: 76.5rem;
+  height: 8rem;
+  background-color: #2979ff; /* 기본 파란색 */
+  color: #fff;
+  font-size: 2.4rem;
+  font-family: Pretendard;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+  transition: background-color 0.2s;
+}
+.email-btn:hover {
+  background-color: #1c6fff; /* hover 시 더 진한 파란색 */
+}
+
+.login-btn {
+  width: 76.5rem;
+  height: 8rem;
+  background-color: #fff; /* 흰색 배경 */
+  color: #333;
+  font-size: 2.4rem;
+  font-family: Pretendard;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  padding: 1.4rem; /* px 단위 통일, 가독성 향상 */
+  transition: background-color 0.2s;
+}
+.login-btn:hover {
+  background-color: #f7f7f7cc; /* hover 시 연한 회색 */
+}

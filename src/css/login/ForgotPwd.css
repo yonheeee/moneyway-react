@@ -1,0 +1,40 @@
+
+/* 비밀번호 찾기 헤더 영역 */
+.forgot-pwd-header {
+  display: flex;               /* 플렉스 레이아웃 적용 */
+  flex-direction: column;      /* 세로 방향 정렬 */
+  align-items: center;         /* 가로축(수평) 중앙 정렬 */
+  justify-content: center;     /* 세로축(수직) 중앙 정렬 */
+  /* display: flex 사용 시 text-align은 무시됨 */
+  margin-top: 11rem;
+  margin-bottom: 1rem;
+}
+
+
+/* 지갑(로고) 이미지 스타일 */
+.wallet-logo {
+  width: 15rem;
+  height: 16.8rem;
+  margin-bottom: 1rem;
+}
+
+
+/* 인증코드 전송 버튼 스타일 */
+.btn-emailcode {
+  width: 100%;
+  padding: 1.6rem;
+  background-color: #0066f9;
+  color: #fff;
+  font-size: 2.4rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+/* 인증코드 버튼 비활성화 상태 */
+.btn-emailcode:disabled {
+  background-color: #bbd6ff;
+  cursor: not-allowed;
+}

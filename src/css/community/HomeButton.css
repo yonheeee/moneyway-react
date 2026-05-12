@@ -1,0 +1,132 @@
+/* =============================
+   사이드 네비게이션 래퍼
+============================= */
+.side-nav-wrapper {
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 2.5rem 2.5rem 2.5rem 10rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* 섹션 간 기본 gap 제거 (일관화를 위해 아래에서 제어) */
+  align-items: flex-start;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  z-index: 50;
+
+  /* ✅ 버튼 간격 통일 노브 */
+  --btn-gap: 3rem;
+}
+
+/* 파란 세로선 */
+.side-nav-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.4rem;
+  height: 100%;
+  background-color: #307ef1;
+}
+
+/* (선택) 상단 분리선 자리 – 필요 없으면 제거 가능 */
+.top-bar { height: 0; width: 0; }
+
+/* =============================
+   그룹 레이아웃
+============================= */
+
+
+.nav-bottom {
+  display: flex;
+  flex-direction: column;  /* 홈/글쓰기 버튼 세로 정렬 */
+  gap: var(--btn-gap);     /* ← 홈↔+ 버튼 간격 */
+  align-items: flex-start;
+  /* ❌ 여기 margin-top을 주면 ‘이전↔홈’ 간격이 달라짐 */
+}
+
+/* ✅ ‘이전 버튼이 있을 때만’ 홈 그룹 위 여백을 동일하게 */
+.nav-top + .nav-bottom {
+  margin-top: var(--btn-gap); /* ← 이전↔홈 간격 == 홈↔+ 간격 */
+}
+
+/* =============================
+   사이드 버튼 공통
+============================= */
+.side-btn {
+  background: none;
+  border: none;
+  outline: none;
+  color: #307ef1;
+  font-size: 2.4rem;           /* 아이콘 24px과 균형 */
+  cursor: pointer;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  transition: transform 0.1s ease, color 0.15s ease, box-shadow 0.18s ease;
+}
+
+/* 호버/프레스/포커스 */
+.side-btn:hover {
+  transform: translateY(-2px);
+  color: #1f5ec4;
+}
+.side-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+.side-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.28rem rgba(48, 126, 241, 0.28);
+}
+
+/* =============================
+   개별 버튼(필요 시 커스터마이즈)
+============================= */
+.post-back-btn { }
+.home-btn { }
+.write-btn { }  /* “글쓰기(+)” 버튼도 공통 스타일 사용 */
+
+.side-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* 오버레이: 완전히 덮는 강한 색상 */
+.side-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #307ef1;             /* 파란색 전체 덮음 */
+  transform: translateX(100%);     /* 오른쪽 바깥에서 시작 */
+  transition: transform 0.35s ease-out; /* 좀 더 느리고 확실하게 */
+  z-index: -1;                     /* 아이콘 위로 덮고 싶으면 0 */
+}
+
+/* 호버 시 오른쪽 → 왼쪽으로 확 덮음 */
+.side-btn:hover::before {
+  transform: translateX(0);
+}
+
+/* 아이콘 색상도 반전되게 */
+.side-btn {
+  color: #307ef1;
+  transition: color 0.25s ease;
+}
+.side-btn:hover {
+  color: #fff;                     /* 흰색으로 반전 */
+}
+
+/* 눌림/포커스 효과는 그대로 */
+.side-btn:active {
+  transform: translateY(-1px) scale(0.96);
+}
+.side-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 0.28rem rgba(48, 126, 241, 0.45);
+}

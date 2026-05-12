@@ -1,0 +1,61 @@
+.horizontal-slider-root {
+  width: 100%;
+}
+
+.scroll-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0;
+  margin-bottom: 1.4rem; 
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.controls-container {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  gap: 5rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.arrow-button {
+  flex-shrink: 0; 
+  background-color: white;
+  border: 0.1rem solid #e0e0e0;
+  border-radius: 50%;
+  width: 3.4rem;
+  height: 3.4rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-button img {
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+/* .progress-bar-container {      
+  height: 0.2rem;
+  background-color: #eee;
+  border-radius: 0.1rem;
+  overflow: hidden;
+  margin: 4.5rem 1.0rem;
+  position: relative;
+  width: 30vW;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  height: 100%;
+  background-color: #333;
+  border-radius: 0.1rem;
+  transition: left 0.20s, width 0.20s;
+} */

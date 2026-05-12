@@ -1,0 +1,156 @@
+.cart-item-container {
+  display: flex;
+  align-items: center;
+  background-color: #f8f9fb;
+  padding: 1.2rem 2rem;
+  border-radius: 1.2rem;
+  margin-bottom: 1.2rem;
+  width: 95%;
+}
+
+.cart-item-image {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.8rem;
+  object-fit: cover;
+  margin-right: 1.5rem;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-name {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.cart-item-category {
+  font-size: 1.4rem;
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.cart-item-delete {
+  background-color: #e9edf4;
+  border: none;
+  border-radius: 999px;
+  width: 3.2rem;
+  height: 3.2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 1.5rem;
+}
+
+.cart-item-price-input {
+  border-radius: 5rem;
+  border: 0.1rem solid black;
+  width: 8rem;
+  height: 2.4rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-left: auto;
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge 화살표 없애는거 */
+.cart-item-price-input::-webkit-outer-spin-button,
+.cart-item-price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.cart-item-save {
+  background-color: white;
+  color: #307ef1;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+/* ============ 안전한 마이크로 인터랙션 (레이아웃 불변) ============ */
+
+/* 카드: 배경/그림자만 살짝, 크기/배치 변화 없음 */
+.cart-item-container {
+  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+}
+.cart-item-container:hover {
+  background-color: #f2f5fb;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+}
+
+/* 썸네일: 절대 크기 변화 금지 (혹시 다른 스타일이 scale 주입해도 무시) */
+.cart-item-image {
+  transform: none !important;
+  transition: filter 0.2s ease;
+}
+.cart-item-container:hover .cart-item-image {
+  /* 색감만 아주 살짝 선명하게 */
+  filter: saturate(1.03) contrast(1.02);
+}
+
+/* 가격 표시(편집 전): 색/아이콘만 살짝, 레이아웃 영향 X */
+.cart-item-price-view {
+  transition: color 0.15s ease, filter 0.2s ease;
+}
+.cart-item-price-view:hover {
+  filter: brightness(0.97);
+}
+.cart-item-price-view svg {
+  transition: transform 0.18s ease;
+}
+.cart-item-price-view:hover svg {
+  transform: rotate(-6deg);
+}
+
+/* 입력창: 포커스 링만 (폭/높이 안 바뀜) */
+.cart-item-price-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.cart-item-price-input:focus {
+  border-color: #307ef1;
+  box-shadow: 0 0 0 0.28rem rgba(48,126,241,0.15);
+}
+
+/* 저장 버튼: 배경색만 살짝 */
+.cart-item-save {
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.cart-item-save:hover {
+  background-color: #e9f2ff;
+  color: #2e6fe0;
+}
+
+/* 삭제 버튼: 은은한 경고 톤 */
+.cart-item-delete {
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.cart-item-delete:hover {
+  background-color: #ffe8ea;
+  color: #d64545;
+}
+
+/* 모션 최소화 환경 배려 */
+@media (prefers-reduced-motion: reduce) {
+  .cart-item-container,
+  .cart-item-image,
+  .cart-item-price-view,
+  .cart-item-price-input,
+  .cart-item-save,
+  .cart-item-delete {
+    transition: none !important;
+  }
+}
